@@ -1,8 +1,8 @@
 
 
 resource "aws_instance" "roboshop" {
-  ami           = "ami-0220d79f3f480ecf5"
-  instance_type = "t3.micro"
+  ami           = var.ami_id
+  instance_type = var.instance_type
 vpc_security_group_ids= [aws_security_group.allow_tls.id]
 
   tags = {
@@ -12,8 +12,8 @@ vpc_security_group_ids= [aws_security_group.allow_tls.id]
 }
 
 resource "aws_security_group" "allow_tls" {
-  name        = "allow_trafic_tls"
-  description = "Allow TLS inbound traffic and all outbound traffic"
+  name        = var.security_group_name
+  description = var.sg_description
 
 egress {
     from_port        = 0
