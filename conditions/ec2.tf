@@ -3,6 +3,7 @@
 resource "aws_instance" "roboshop" {
   ami           = var.ami_id
  # instance_type = var.instance_type
+ #condition for if dev environment then t3.micro else t3.small
  instance_type = var.environment == "dev" ? "t3.micro" : "t3.small"
 
 vpc_security_group_ids= [aws_security_group.allow_tls.id]

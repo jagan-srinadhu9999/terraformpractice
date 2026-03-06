@@ -14,6 +14,9 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
+#Ignore .tfvars files, which are likely to contain sensitive data, such as passwords or API keys. These should not be committed to version control.
+*.tfvars
+
 # CLI configuration files
 .terraformrc
 terraform.rc
