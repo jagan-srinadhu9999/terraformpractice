@@ -10,7 +10,7 @@ variable "instance_type" {
 
 variable "security_group_name" {
   type = string
-  default = "allow_trafic_tls" 
+  default = "allow_trafic_tls_default" 
 }
 
 variable "sg_description" {
