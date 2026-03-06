@@ -59,7 +59,7 @@ variable "ec2-tags" {
     Name = "terraform-example"
     Project= "roboshop"
     Terraform = "true"
-    Environment = "prod"
+    Environment = "dev"
   }
 }
 
@@ -68,7 +68,7 @@ variable "ec2-tags" {
     default = {
       Name = "allow_all_terraform"
       Terraform = "true"
-      Environment = "prod"
+      Environment = "dev"
     }
 
   
