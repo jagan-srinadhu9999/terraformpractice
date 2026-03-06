@@ -50,7 +50,7 @@ variable "sg_ingress_cidr_blocks" {
 
 variable "environment" {
   type = string
-  default = "prod"
+  default = "dev"
 }
 
 variable "ec2-tags" {
@@ -59,7 +59,7 @@ variable "ec2-tags" {
     Name = "terraform-example"
     Project= "roboshop"
     Terraform = "true"
-    Environment = "dev"
+    Environment = "prod"
   }
 }
 
@@ -68,7 +68,7 @@ variable "ec2-tags" {
     default = {
       Name = "allow_all_terraform"
       Terraform = "true"
-      Environment = "dev"
+      Environment = "prod"
     }
 
   
