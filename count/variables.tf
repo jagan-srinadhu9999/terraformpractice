@@ -1,6 +1,7 @@
 variable "instances" {
   type = list(string)
-  default = ["mongodb","redis","mysql","rabbitmq","catalogue","user","cart","payment","shipping","frontend"]
+  #default = ["mongodb","redis","mysql","rabbitmq","catalogue","user","cart","payment","shipping","frontend"]
+   default = ["mongodb","mysql"]
 }
 
 variable "ami_id" {
@@ -31,4 +32,16 @@ variable "ec2-tags" {
     Terraform = "true"
     Environment = "dev"
   }
+}
+
+#route53 zone id
+
+variable "zone_id" {
+  type = string
+  default = "Z020759124EBIDMP7BTBM"
+}
+
+variable "domain_name" {
+  type = string
+  default = "svjdevopsinfralab.online"
 }
