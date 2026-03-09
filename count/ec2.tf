@@ -1,11 +1,14 @@
 resource "aws_instance" "roboshop" {
+    /*without hardcoding the count number we just send the length of the list of instances 
+    and it will create as many instances as the number of items in the list*/
+
     count = length(var.instances)
   ami           = var.ami_id
   instance_type = var.instance_type
 vpc_security_group_ids= [aws_security_group.allow_tls.id]
 
   tags = {
-    #name = mogodb-roboshop-dev
+    #name = mogodb-roboshop-dev and here we are using the count index to get the name of the instance from the list and also using the project and environment from the tags variable
     Name = "${var.instances[count.index]}-${var.ec2-tags["Project"]}-${var.ec2-tags["Environment"]}"
     Project= "roboshop"
   }

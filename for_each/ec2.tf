@@ -19,17 +19,23 @@ resource "aws_security_group" "allow_tls" {
 egress {
     from_port        = 0
     to_port          = 0
-    protocol         = "-1"
+    protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-  ingress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
+
+  dynamic "ingress" {
+    for_each = var.ingress_rules
+    content{
+      description = ingress.key
+    from_port        = ingress.value
+    to_port          = ingress.value
+    protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
+   # ipv6_cidr_blocks = ["::/0"]
   }
+}
+  
   tags = {
     Name = "allow_all_terraform_roboshop_dev_sg"
   }
